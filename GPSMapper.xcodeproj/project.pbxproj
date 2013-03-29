@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A519BBC316FDCCA0008D9553 /* GPSMap.m in Sources */ = {isa = PBXBuildFile; fileRef = A519BBC216FDCCA0008D9553 /* GPSMap.m */; };
+		A519BBC616FDCCFA008D9553 /* GPSMapItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A519BBC516FDCCF9008D9553 /* GPSMapItem.m */; };
+		A519BBCC1701D449008D9553 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A519BBCB1701D449008D9553 /* MapViewController.m */; };
+		A519BBD01701F67B008D9553 /* MapParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A519BBCF1701F67B008D9553 /* MapParametersViewController.m */; };
+		A519BBD51705755C008D9553 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A519BBD41705755C008D9553 /* MapKit.framework */; };
+		A519BBD8170578B8008D9553 /* ObjectParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A519BBD7170578B8008D9553 /* ObjectParametersViewController.m */; };
+		A519BBE21705A984008D9553 /* GPSicon_iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A519BBE11705A984008D9553 /* GPSicon_iphone.png */; };
+		A519BBE41705A99E008D9553 /* GPSicon_iphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A519BBE31705A99E008D9553 /* GPSicon_iphone@2x.png */; };
+		A519BBE61705A9AD008D9553 /* GPSicon_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A519BBE51705A9AC008D9553 /* GPSicon_ipad.png */; };
+		A519BBE81705A9BB008D9553 /* GPSicon_ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A519BBE71705A9BB008D9553 /* GPSicon_ipad@2x.png */; };
+		A519BBEA1705C6FF008D9553 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A519BBE91705C6FF008D9553 /* CoreLocation.framework */; };
+		A519BBED1705CCCE008D9553 /* GPSPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = A519BBEC1705CCCE008D9553 /* GPSPoint.m */; };
 		A5A7E12816F198EB00EC6592 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A7E12716F198EB00EC6592 /* UIKit.framework */; };
 		A5A7E12A16F198EB00EC6592 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A7E12916F198EB00EC6592 /* Foundation.framework */; };
 		A5A7E12C16F198EB00EC6592 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A7E12B16F198EB00EC6592 /* CoreGraphics.framework */; };
@@ -18,11 +30,29 @@
 		A5A7E13E16F198EB00EC6592 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5A7E13D16F198EB00EC6592 /* Default-568h@2x.png */; };
 		A5A7E14116F198EB00EC6592 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5A7E13F16F198EB00EC6592 /* MainStoryboard_iPhone.storyboard */; };
 		A5A7E14416F198EB00EC6592 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5A7E14216F198EB00EC6592 /* MainStoryboard_iPad.storyboard */; };
-		A5A7E14716F198EB00EC6592 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A7E14616F198EB00EC6592 /* MasterViewController.m */; };
-		A5A7E14A16F198EB00EC6592 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A7E14916F198EB00EC6592 /* DetailViewController.m */; };
+		A5A7E14716F198EB00EC6592 /* MapTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A7E14616F198EB00EC6592 /* MapTableViewController.m */; };
+		A5A7E14A16F198EB00EC6592 /* ObjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A7E14916F198EB00EC6592 /* ObjectViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A519BBC116FDCCA0008D9553 /* GPSMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSMap.h; sourceTree = "<group>"; };
+		A519BBC216FDCCA0008D9553 /* GPSMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSMap.m; sourceTree = "<group>"; };
+		A519BBC416FDCCF9008D9553 /* GPSMapItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSMapItem.h; sourceTree = "<group>"; };
+		A519BBC516FDCCF9008D9553 /* GPSMapItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSMapItem.m; sourceTree = "<group>"; };
+		A519BBCA1701D449008D9553 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		A519BBCB1701D449008D9553 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		A519BBCE1701F67B008D9553 /* MapParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapParametersViewController.h; sourceTree = "<group>"; };
+		A519BBCF1701F67B008D9553 /* MapParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapParametersViewController.m; sourceTree = "<group>"; };
+		A519BBD41705755C008D9553 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A519BBD6170578B8008D9553 /* ObjectParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectParametersViewController.h; sourceTree = "<group>"; };
+		A519BBD7170578B8008D9553 /* ObjectParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectParametersViewController.m; sourceTree = "<group>"; };
+		A519BBE11705A984008D9553 /* GPSicon_iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GPSicon_iphone.png; path = ../GPSicon_iphone.png; sourceTree = "<group>"; };
+		A519BBE31705A99E008D9553 /* GPSicon_iphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GPSicon_iphone@2x.png"; path = "../GPSicon_iphone@2x.png"; sourceTree = "<group>"; };
+		A519BBE51705A9AC008D9553 /* GPSicon_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GPSicon_ipad.png; path = ../GPSicon_ipad.png; sourceTree = "<group>"; };
+		A519BBE71705A9BB008D9553 /* GPSicon_ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GPSicon_ipad@2x.png"; path = "../GPSicon_ipad@2x.png"; sourceTree = "<group>"; };
+		A519BBE91705C6FF008D9553 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A519BBEB1705CCCE008D9553 /* GPSPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSPoint.h; sourceTree = "<group>"; };
+		A519BBEC1705CCCE008D9553 /* GPSPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSPoint.m; sourceTree = "<group>"; };
 		A5A7E12416F198EB00EC6592 /* GPSMapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPSMapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5A7E12716F198EB00EC6592 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A5A7E12916F198EB00EC6592 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -38,10 +68,10 @@
 		A5A7E13D16F198EB00EC6592 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A5A7E14016F198EB00EC6592 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		A5A7E14316F198EB00EC6592 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		A5A7E14516F198EB00EC6592 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		A5A7E14616F198EB00EC6592 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		A5A7E14816F198EB00EC6592 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		A5A7E14916F198EB00EC6592 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		A5A7E14516F198EB00EC6592 /* MapTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapTableViewController.h; sourceTree = "<group>"; };
+		A5A7E14616F198EB00EC6592 /* MapTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapTableViewController.m; sourceTree = "<group>"; };
+		A5A7E14816F198EB00EC6592 /* ObjectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectViewController.h; sourceTree = "<group>"; };
+		A5A7E14916F198EB00EC6592 /* ObjectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjectViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +79,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A519BBEA1705C6FF008D9553 /* CoreLocation.framework in Frameworks */,
+				A519BBD51705755C008D9553 /* MapKit.framework in Frameworks */,
 				A5A7E12816F198EB00EC6592 /* UIKit.framework in Frameworks */,
 				A5A7E12A16F198EB00EC6592 /* Foundation.framework in Frameworks */,
 				A5A7E12C16F198EB00EC6592 /* CoreGraphics.framework in Frameworks */,
@@ -58,9 +90,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A519BBCD1701D459008D9553 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A519BBC116FDCCA0008D9553 /* GPSMap.h */,
+				A519BBC216FDCCA0008D9553 /* GPSMap.m */,
+				A519BBC416FDCCF9008D9553 /* GPSMapItem.h */,
+				A519BBC516FDCCF9008D9553 /* GPSMapItem.m */,
+				A519BBEB1705CCCE008D9553 /* GPSPoint.h */,
+				A519BBEC1705CCCE008D9553 /* GPSPoint.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		A5A7E11B16F198EB00EC6592 = {
 			isa = PBXGroup;
 			children = (
+				A519BBE91705C6FF008D9553 /* CoreLocation.framework */,
 				A5A7E12D16F198EB00EC6592 /* GPSMapper */,
 				A5A7E12616F198EB00EC6592 /* Frameworks */,
 				A5A7E12516F198EB00EC6592 /* Products */,
@@ -78,6 +124,7 @@
 		A5A7E12616F198EB00EC6592 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A519BBD41705755C008D9553 /* MapKit.framework */,
 				A5A7E12716F198EB00EC6592 /* UIKit.framework */,
 				A5A7E12916F198EB00EC6592 /* Foundation.framework */,
 				A5A7E12B16F198EB00EC6592 /* CoreGraphics.framework */,
@@ -88,14 +135,21 @@
 		A5A7E12D16F198EB00EC6592 /* GPSMapper */ = {
 			isa = PBXGroup;
 			children = (
+				A519BBCD1701D459008D9553 /* Model */,
 				A5A7E13616F198EB00EC6592 /* AppDelegate.h */,
 				A5A7E13716F198EB00EC6592 /* AppDelegate.m */,
 				A5A7E13F16F198EB00EC6592 /* MainStoryboard_iPhone.storyboard */,
 				A5A7E14216F198EB00EC6592 /* MainStoryboard_iPad.storyboard */,
-				A5A7E14516F198EB00EC6592 /* MasterViewController.h */,
-				A5A7E14616F198EB00EC6592 /* MasterViewController.m */,
-				A5A7E14816F198EB00EC6592 /* DetailViewController.h */,
-				A5A7E14916F198EB00EC6592 /* DetailViewController.m */,
+				A5A7E14516F198EB00EC6592 /* MapTableViewController.h */,
+				A5A7E14616F198EB00EC6592 /* MapTableViewController.m */,
+				A519BBCE1701F67B008D9553 /* MapParametersViewController.h */,
+				A519BBCF1701F67B008D9553 /* MapParametersViewController.m */,
+				A519BBCA1701D449008D9553 /* MapViewController.h */,
+				A519BBCB1701D449008D9553 /* MapViewController.m */,
+				A519BBD6170578B8008D9553 /* ObjectParametersViewController.h */,
+				A519BBD7170578B8008D9553 /* ObjectParametersViewController.m */,
+				A5A7E14816F198EB00EC6592 /* ObjectViewController.h */,
+				A5A7E14916F198EB00EC6592 /* ObjectViewController.m */,
 				A5A7E12E16F198EB00EC6592 /* Supporting Files */,
 			);
 			path = GPSMapper;
@@ -104,6 +158,10 @@
 		A5A7E12E16F198EB00EC6592 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A519BBE71705A9BB008D9553 /* GPSicon_ipad@2x.png */,
+				A519BBE51705A9AC008D9553 /* GPSicon_ipad.png */,
+				A519BBE31705A99E008D9553 /* GPSicon_iphone@2x.png */,
+				A519BBE11705A984008D9553 /* GPSicon_iphone.png */,
 				A5A7E12F16F198EB00EC6592 /* GPSMapper-Info.plist */,
 				A5A7E13016F198EB00EC6592 /* InfoPlist.strings */,
 				A5A7E13316F198EB00EC6592 /* main.m */,
@@ -172,6 +230,10 @@
 				A5A7E13E16F198EB00EC6592 /* Default-568h@2x.png in Resources */,
 				A5A7E14116F198EB00EC6592 /* MainStoryboard_iPhone.storyboard in Resources */,
 				A5A7E14416F198EB00EC6592 /* MainStoryboard_iPad.storyboard in Resources */,
+				A519BBE21705A984008D9553 /* GPSicon_iphone.png in Resources */,
+				A519BBE41705A99E008D9553 /* GPSicon_iphone@2x.png in Resources */,
+				A519BBE61705A9AD008D9553 /* GPSicon_ipad.png in Resources */,
+				A519BBE81705A9BB008D9553 /* GPSicon_ipad@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,8 +246,14 @@
 			files = (
 				A5A7E13416F198EB00EC6592 /* main.m in Sources */,
 				A5A7E13816F198EB00EC6592 /* AppDelegate.m in Sources */,
-				A5A7E14716F198EB00EC6592 /* MasterViewController.m in Sources */,
-				A5A7E14A16F198EB00EC6592 /* DetailViewController.m in Sources */,
+				A5A7E14716F198EB00EC6592 /* MapTableViewController.m in Sources */,
+				A5A7E14A16F198EB00EC6592 /* ObjectViewController.m in Sources */,
+				A519BBC316FDCCA0008D9553 /* GPSMap.m in Sources */,
+				A519BBC616FDCCFA008D9553 /* GPSMapItem.m in Sources */,
+				A519BBCC1701D449008D9553 /* MapViewController.m in Sources */,
+				A519BBD01701F67B008D9553 /* MapParametersViewController.m in Sources */,
+				A519BBD8170578B8008D9553 /* ObjectParametersViewController.m in Sources */,
+				A519BBED1705CCCE008D9553 /* GPSPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +351,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GPSMapper/GPSMapper-Prefix.pch";
 				INFOPLIST_FILE = "GPSMapper/GPSMapper-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -294,6 +363,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GPSMapper/GPSMapper-Prefix.pch";
 				INFOPLIST_FILE = "GPSMapper/GPSMapper-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -318,6 +388,7 @@
 				A5A7E14F16F198EB00EC6592 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class DetailViewController;
+@class MapViewController;
 
-@interface MasterViewController : UITableViewController
+@interface MapTableViewController : UITableViewController
 
-@property (strong, nonatomic) DetailViewController *detailViewController;
+@property (strong, nonatomic) MapViewController *detailViewController;
 
 @end
