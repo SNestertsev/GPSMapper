@@ -91,17 +91,31 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="satellite" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ggZ-xC-fyJ">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="ggZ-xC-fyJ">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="362" id="rkj-7B-Juw"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="Cx9-5c-hZd" id="151-Kf-1CV"/>
+                                </connections>
                             </mapView>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No objects" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fou-Pw-uvg">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="126-36-s4G"/>
+                                    <constraint firstAttribute="width" constant="124" id="hHS-fK-V5S"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="E3U-9e-kHf" firstAttribute="top" secondItem="MUh-wS-eSW" secondAttribute="top" constant="20" symbolic="YES" type="default" id="08i-pg-TAq"/>
                             <constraint firstItem="E3U-9e-kHf" firstAttribute="leading" secondItem="MUh-wS-eSW" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="6ym-dI-AmF"/>
+                            <constraint firstAttribute="bottom" secondItem="fou-Pw-uvg" secondAttribute="bottom" constant="171" id="71b-co-86g"/>
                             <constraint firstItem="ggZ-xC-fyJ" firstAttribute="leading" secondItem="MUh-wS-eSW" secondAttribute="leading" type="default" id="HFd-oX-e52"/>
+                            <constraint firstItem="fou-Pw-uvg" firstAttribute="centerX" secondItem="ggZ-xC-fyJ" secondAttribute="centerX" type="default" id="WSU-q7-jxG"/>
                             <constraint firstItem="1pK-ib-4Cb" firstAttribute="leading" secondItem="E3U-9e-kHf" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="YUG-SG-TxQ"/>
                             <constraint firstItem="ggZ-xC-fyJ" firstAttribute="trailing" secondItem="MUh-wS-eSW" secondAttribute="trailing" type="default" id="bI9-Wu-Owy"/>
                             <constraint firstAttribute="trailing" secondItem="1pK-ib-4Cb" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="hsi-fK-ork"/>
@@ -112,6 +126,7 @@
                     <connections>
                         <outlet property="mapView" destination="ggZ-xC-fyJ" id="QbG-4S-iwV"/>
                         <outlet property="nameField" destination="1pK-ib-4Cb" id="k2Y-UK-V1p"/>
+                        <outlet property="noObjectsLabel" destination="fou-Pw-uvg" id="gFR-CM-HbP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4dK-E4-VjQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -192,7 +207,20 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="satellite" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ing-tF-oQF"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="ing-tF-oQF">
+                                <connections>
+                                    <outlet property="delegate" destination="qDl-oF-Wba" id="BdO-RA-1UF"/>
+                                </connections>
+                            </mapView>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No points" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urd-XG-KRh">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="fCa-LD-5bu"/>
+                                    <constraint firstAttribute="width" constant="99" id="wX3-ay-Xl9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -204,17 +232,21 @@
                             <constraint firstItem="6Z7-OU-X3K" firstAttribute="top" secondItem="NdC-NF-Uyh" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="i1E-y7-Cij"/>
                             <constraint firstItem="NdC-NF-Uyh" firstAttribute="leading" secondItem="EM6-aA-4gn" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="iAZ-TV-847"/>
                             <constraint firstItem="NdC-NF-Uyh" firstAttribute="baseline" secondItem="EM6-aA-4gn" secondAttribute="baseline" type="default" id="lW7-2H-XTv"/>
+                            <constraint firstAttribute="bottom" secondItem="Urd-XG-KRh" secondAttribute="bottom" constant="153" id="mbz-zf-knW"/>
                             <constraint firstAttribute="trailing" secondItem="NdC-NF-Uyh" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="q3X-fA-aPG"/>
                             <constraint firstItem="ing-tF-oQF" firstAttribute="leading" secondItem="I2B-eO-cnv" secondAttribute="leading" type="default" id="qac-c8-wSv"/>
                             <constraint firstAttribute="trailing" secondItem="QaY-Ug-NaG" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="tr3-go-DNX"/>
                             <constraint firstItem="6Z7-OU-X3K" firstAttribute="leading" secondItem="I2B-eO-cnv" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="uNe-Oh-Hl4"/>
+                            <constraint firstItem="Urd-XG-KRh" firstAttribute="centerX" secondItem="ing-tF-oQF" secondAttribute="centerX" type="default" id="wqh-ug-udS"/>
                             <constraint firstItem="QaY-Ug-NaG" firstAttribute="top" secondItem="NdC-NF-Uyh" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="znh-uS-2il"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="63q-y2-1n6"/>
                     <connections>
                         <outlet property="closedSwitch" destination="QaY-Ug-NaG" id="y5N-Xv-wfh"/>
+                        <outlet property="mapView" destination="ing-tF-oQF" id="izu-nm-df1"/>
                         <outlet property="nameField" destination="NdC-NF-Uyh" id="MpS-nM-hSq"/>
+                        <outlet property="noPointsLabel" destination="Urd-XG-KRh" id="9dD-hA-ZyH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f8k-c7-QjP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -272,7 +304,11 @@
                                     <action selector="addPoint" destination="Jf9-Wy-pn3" eventType="touchUpInside" id="DEF-5Q-4oH"/>
                                 </connections>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="satellite" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nz5-Yr-ULD"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nz5-Yr-ULD">
+                                <connections>
+                                    <outlet property="delegate" destination="Jf9-Wy-pn3" id="6Dv-Ke-dW6"/>
+                                </connections>
+                            </mapView>
                             <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="msq-cD-veC">
                                 <connections>
                                     <action selector="closedSwitchChanged:" destination="Jf9-Wy-pn3" eventType="valueChanged" id="pY7-tc-8qA"/>

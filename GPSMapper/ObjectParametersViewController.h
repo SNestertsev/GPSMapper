@@ -11,7 +11,7 @@
 @class GPSMap;
 @class GPSMapItem;
 
-@interface ObjectParametersViewController : UIViewController
+@interface ObjectParametersViewController : UIViewController <MKMapViewDelegate>
 
 @property (nonatomic, weak) GPSMap* map;
 @property (nonatomic, weak) GPSMapItem* object;

@@ -31,4 +31,9 @@
     return self;
 }
 
+-(CLLocationCoordinate2D)getCoordinate
+{
+    return CLLocationCoordinate2DMake(self.latitude, self.longitude);
+}
+
 @end

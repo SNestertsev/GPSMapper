@@ -16,6 +16,8 @@
 @property (nonatomic, strong, readonly) NSMutableArray* points;
 @property (nonatomic) BOOL closed;
 
-- (id) initWithName: (NSString*) name;
+-(id) initWithName: (NSString*) name;
+-(MKCoordinateRegion) getPointsRegion;
+-(CLLocationCoordinate2D*) getCoordinates;
 
 @end

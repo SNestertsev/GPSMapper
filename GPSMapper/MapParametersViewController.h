@@ -10,7 +10,7 @@
 
 @class GPSMap;
 
-@interface MapParametersViewController : UIViewController
+@interface MapParametersViewController : UIViewController <MKMapViewDelegate>
 
 @property (nonatomic, weak) NSMutableArray* maps;
 @property (nonatomic, weak) GPSMap* map;

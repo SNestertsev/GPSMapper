@@ -10,7 +10,7 @@
 
 @class GPSMapItem;
 
-@interface ObjectViewController : UIViewController <CLLocationManagerDelegate>
+@interface ObjectViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
 
 @property (strong, nonatomic) GPSMapItem* objectDetails;
 

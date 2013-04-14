@@ -15,5 +15,6 @@
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate;
 - (id)initWithLongitute:(CLLocationDegrees)longitude andLatitude:(CLLocationDegrees)latitude;
+- (CLLocationCoordinate2D)getCoordinate;
 
 @end
