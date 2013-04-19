@@ -8,11 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GPSMap : NSObject
+@interface GPSMap : NSObject <NSCoding>
 
+@property (nonatomic, strong) NSString* originalName;
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong, readonly) NSMutableArray* objects;
+@property (nonatomic, strong) NSDate *creationDate;
+@property (nonatomic, readonly) NSDictionary* jsonDescription;
 
-- (id) initWithName: (NSString*) name;
+-(id)initWithName: (NSString*) name;
+-(id)initWithJSON: (NSDictionary*) json;
+-(MKCoordinateRegion) getMapRegion;
 
 @end

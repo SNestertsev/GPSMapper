@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class MapRepository;
 @class GPSMap;
 @class GPSMapItem;
 

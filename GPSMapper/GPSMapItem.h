@@ -8,16 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GPSMapItem : NSObject
+@interface GPSMapItem : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSString* name;
-
 // array of GPSPoint
 @property (nonatomic, strong, readonly) NSMutableArray* points;
 @property (nonatomic) BOOL closed;
+@property (nonatomic, readonly) NSDictionary* jsonDescription;
 
 -(id) initWithName: (NSString*) name;
--(MKCoordinateRegion) getPointsRegion;
+-(id) initWithJSON: (NSDictionary*) json;
+-(MKCoordinateRegion) getMapRegion;
 -(CLLocationCoordinate2D*) getCoordinates;
+-(MKMapRect) getMapRect;
 
 @end

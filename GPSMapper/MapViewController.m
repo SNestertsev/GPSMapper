@@ -11,6 +11,7 @@
 #import "ObjectViewController.h"
 #import "GPSMap.h"
 #import "GPSMapItem.h"
+#import "MapRepository.h"
 
 @interface MapViewController ()
 
@@ -83,6 +84,8 @@
     [self.detailItem.objects insertObject:object atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    [[MapRepository instance] saveMap:self.detailItem];
 }
 
 #pragma mark - Table view data source
@@ -182,6 +185,7 @@
     else if ([[segue identifier] isEqualToString:@"objectDetails"]) {
         GPSMapItem *object = self.detailItem.objects[self.selectedRow];
         ObjectViewController* destination = [segue destinationViewController];
+        destination.map = self.detailItem;
         destination.objectDetails = object;
     }
 }

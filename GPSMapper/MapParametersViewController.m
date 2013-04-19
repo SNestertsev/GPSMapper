@@ -10,21 +10,24 @@
 #import "GPSMap.h"
 #import "GPSMapItem.h"
 #import "GPSPoint.h"
+#import "MapRepository.h"
+#import "MapItemAnnotation.h"
 
 @interface MapParametersViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UILabel *noObjectsLabel;
+@property (nonatomic) BOOL isDeletedMap;
 
 @end
 
 @implementation MapParametersViewController
 
-@synthesize maps = _maps;
 @synthesize map = _map;
 @synthesize nameField = _nameField;
 @synthesize mapView = _mapView;
+@synthesize isDeletedMap = _isDeletedMap;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,17 +46,24 @@
     
     UIBarButtonItem *trashButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteMap:)];
     self.navigationItem.rightBarButtonItem = trashButton;
+    self.isDeletedMap = NO;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     if (self.map.objects.count > 0) {
         for (int i = 0; i < self.map.objects.count; i++) {
-            [self addObjectOverlay:[self.map.objects objectAtIndex:i]];
+            [self addOverlayAndAnnotationForObject:[self.map.objects objectAtIndex:i]];
         }
     }
     else {
         self.noObjectsLabel.hidden = NO;
+    }
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    if (self.map.objects.count > 0) {
+        [self.mapView setRegion:self.map.getMapRegion animated:NO];
     }
 }
 
@@ -65,20 +75,26 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    if (self.nameField.text.length > 0)
-        self.map.name = self.nameField.text;
+    if (self.isDeletedMap)
+        return;
+    
+    MapRepository *mapRepository = [MapRepository instance];
+    if (self.nameField.text.length > 0 && [mapRepository checkMapName:self.nameField.text]) {
+         self.map.name = self.nameField.text;
+        [mapRepository saveMap:self.map];
+    }
 }
 
 - (void)deleteMap:(id)sender {
-    [self.maps removeObject:self.map];
+    [[MapRepository instance] deleteMap:self.map];
+    self.isDeletedMap = YES;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)addObjectOverlay:(GPSMapItem*)object
+- (void)addOverlayAndAnnotationForObject:(GPSMapItem*)object
 {
     id<MKOverlay> mapOverlayObject;
     if (object.points.count > 0) {
-        [self.mapView setRegion:object.getPointsRegion animated:NO];
         if (object.points.count == 1) {
             GPSPoint *point = [object.points objectAtIndex:0];
             mapOverlayObject = [MKCircle circleWithCenterCoordinate:[point getCoordinate] radius:1.0];
@@ -92,10 +108,15 @@
             }
         }
         [self.mapView addOverlay:mapOverlayObject];
+        
+        GPSPoint *point = [object.points objectAtIndex:0];
+        MapItemAnnotation *annotation = [[MapItemAnnotation alloc] initWithCoordinate:point.getCoordinate andTitle:object.name];
+        [self.mapView addAnnotation:annotation];
     }
 }
 
 #pragma mark MKMapViewDelegate
+
 -(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
 {
     MKOverlayPathView *overlayView;
@@ -117,6 +138,16 @@
     overlayView.alpha = 0.5;
     
     return overlayView;
+}
+
+#pragma mark UITextFieldDelegate
+
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    if (![[MapRepository instance] checkMapName:textField.text]) {
+        return NO;
+    }
+    return YES;
 }
 
 @end

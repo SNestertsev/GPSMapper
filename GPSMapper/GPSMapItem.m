@@ -9,6 +9,10 @@
 #import "GPSMapItem.h"
 #import "GPSPoint.h"
 
+#define kObjectNameAttribute @"objectName"
+#define kIsClosedAttribute @"isClosed"
+#define kPointsAttribute @"points"
+
 @implementation GPSMapItem
 
 @synthesize name = _name;
@@ -28,7 +32,36 @@
     return self;
 }
 
--(MKCoordinateRegion)getPointsRegion
+-(id) initWithJSON:(NSDictionary *)json
+{
+    if (self = [super init]) {
+        self.name = [json objectForKey:kObjectNameAttribute];
+        
+        NSNumber *value = [json objectForKey:kIsClosedAttribute];
+        self.closed = value.boolValue;
+        
+        NSArray* jsonPoints = [json objectForKey:kPointsAttribute];
+        for (NSDictionary* jsonPoint in jsonPoints) {
+            [self.points addObject:[[GPSPoint alloc] initWithJSON:jsonPoint]];
+        }
+    }
+    return self;
+}
+
+-(NSDictionary*)jsonDescription
+{
+    NSMutableArray* jsonPoints = [[NSMutableArray alloc] initWithCapacity:self.points.count];
+    for (GPSPoint* point in self.points) {
+        [jsonPoints addObject:point.jsonDescription];
+    }
+    return [[NSDictionary alloc] initWithObjectsAndKeys:
+            self.name, kObjectNameAttribute,
+            [NSNumber numberWithBool:self.closed], kIsClosedAttribute,
+            jsonPoints, kPointsAttribute,
+            nil];
+}
+
+-(MKCoordinateRegion)getMapRegion
 {
     MKCoordinateRegion region;
     if (self.points.count == 0) {
@@ -92,6 +125,32 @@
         result[i] = CLLocationCoordinate2DMake(point.latitude, point.longitude);
     }
     return result;
+}
+
+-(MKMapRect)getMapRect
+{
+    MKCoordinateRegion region = [self getMapRegion];
+    MKMapRect rect = MKMapRectMake(region.center.longitude - region.span.longitudeDelta / 2.0, region.center.latitude - region.span.latitudeDelta / 2.0, region.span.longitudeDelta, region.span.latitudeDelta);
+    return rect;
+}
+
+#pragma mark NSCoding
+
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.name forKey:kObjectNameAttribute];
+    [aCoder encodeBool:self.closed forKey:kIsClosedAttribute];
+    [aCoder encodeObject:self.points forKey:kPointsAttribute];
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super init]) {
+        _name = [aDecoder decodeObjectForKey:kObjectNameAttribute];
+        _closed = [aDecoder decodeBoolForKey:kIsClosedAttribute];
+        _points = [aDecoder decodeObjectForKey:kPointsAttribute];
+    }
+    return self;
 }
 
 @end

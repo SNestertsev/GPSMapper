@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @class GPSMap;
+@class MapRepository;
 
-@interface MapParametersViewController : UIViewController <MKMapViewDelegate>
+@interface MapParametersViewController : UIViewController <MKMapViewDelegate, UITextFieldDelegate>
 
-@property (nonatomic, weak) NSMutableArray* maps;
 @property (nonatomic, weak) GPSMap* map;
 
 @end

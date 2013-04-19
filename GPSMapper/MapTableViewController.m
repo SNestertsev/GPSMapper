@@ -11,25 +11,19 @@
 #import "MapParametersViewController.h"
 #import "MapViewController.h"
 #import "GPSMap.h"
+#import "MapRepository.h"
 
 @interface MapTableViewController ()
 
-@property (nonatomic, strong) NSMutableArray* maps;
 @property (nonatomic) NSInteger selectedRow;
+@property (nonatomic, strong) MapRepository* mapRepository;
 
 @end
 
 @implementation MapTableViewController
 
-@synthesize maps = _maps;
+@synthesize mapRepository = _mapRepository;
 @synthesize selectedRow = _selectedRow;
-
-- (NSMutableArray*) maps
-{
-    if (!_maps)
-        _maps = [[NSMutableArray alloc] init];
-    return _maps;
-}
 
 - (void)awakeFromNib
 {
@@ -49,6 +43,8 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewMap:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (MapViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    self.mapRepository = [[MapRepository alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -64,12 +60,8 @@
 
 - (void)insertNewMap:(id)sender
 {
-    NSString* mapName = [NSString stringWithFormat:@"Map #%d", self.maps.count + 1];
-    GPSMap* map = [[GPSMap alloc] initWithName: mapName];
-    
-    [self.maps insertObject:map atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.mapRepository createMap];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table View data source
@@ -81,14 +73,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.maps.count;
+    return self.mapRepository.maps.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    GPSMap *map = self.maps[indexPath.row];
+    GPSMap *map = [self.mapRepository getMapAtIndex:indexPath.row];
     cell.textLabel.text = map.name;
     if (map.objects.count > 0)
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%d objects", map.objects.count];
@@ -106,7 +98,8 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.maps removeObjectAtIndex:indexPath.row];
+        GPSMap *map = [self.mapRepository getMapAtIndex:indexPath.row];
+        [self.mapRepository deleteMap:map];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -116,7 +109,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        GPSMap *map = self.maps[indexPath.row];
+        GPSMap *map = [self.mapRepository getMapAtIndex:indexPath.row];
         self.detailViewController.detailItem = map;
     }
 }
@@ -131,13 +124,12 @@
 {
     if ([[segue identifier] isEqualToString:@"mapParams"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        GPSMap *map = self.maps[indexPath.row];
+        GPSMap *map = [self.mapRepository getMapAtIndex:indexPath.row];
         MapParametersViewController* destination = [segue destinationViewController];
-        destination.maps = self.maps;
         destination.map = map;
     }
     else if ([[segue identifier] isEqualToString:@"mapDetails"]) {
-        GPSMap *map = self.maps[self.selectedRow];
+        GPSMap *map = [self.mapRepository getMapAtIndex:self.selectedRow];
         [[segue destinationViewController] setDetailItem:map];
     }
 }

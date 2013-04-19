@@ -10,17 +10,22 @@
 #import "GPSMap.h"
 #import "GPSMapItem.h"
 #import "GPSPoint.h"
+#import "MapRepository.h"
 
 @interface ObjectParametersViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UISwitch *closedSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *noPointsLabel;
+@property (nonatomic) BOOL isDeleted;
 
 @property (nonatomic) id mapOverlayObject;      // MKPolygon or MKPolyline
 @end
 
 @implementation ObjectParametersViewController
+
+@synthesize map = _map;
+@synthesize object = _object;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,6 +42,7 @@
     self.nameField.text = self.object.name;
     self.closedSwitch.on = self.object.closed;
     self.closedSwitch.enabled = NO;
+    self.isDeleted = NO;
     
     UIBarButtonItem *trashButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteObject:)];
     self.navigationItem.rightBarButtonItem = trashButton;
@@ -45,7 +51,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     if (self.object.points.count > 0) {
-        [self.mapView setRegion:self.object.getPointsRegion animated:NO];
+        [self.mapView setRegion:self.object.getMapRegion animated:NO];
         if (self.object.points.count == 1) {
             GPSPoint *point = [self.object.points objectAtIndex:0];
             self.mapOverlayObject = [MKCircle circleWithCenterCoordinate:[point getCoordinate] radius:1.0];
@@ -75,10 +81,13 @@
 {
     if (self.nameField.text.length > 0)
         self.object.name = self.nameField.text;
-    self.object.closed = self.closedSwitch.selected;
+    if (!self.isDeleted) {
+        [[MapRepository instance] saveMap:self.map];
+    }
 }
 
 - (void)deleteObject:(id)sender {
+    self.isDeleted = YES;
     [self.map.objects removeObject:self.object];
     [self.navigationController popViewControllerAnimated:YES];
 }

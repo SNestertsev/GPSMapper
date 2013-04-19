@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class GPSMap;
 @class GPSMapItem;
 
 @interface ObjectViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
 
-@property (strong, nonatomic) GPSMapItem* objectDetails;
+@property (weak, nonatomic) GPSMap* map;
+@property (weak, nonatomic) GPSMapItem* objectDetails;
 
 @end

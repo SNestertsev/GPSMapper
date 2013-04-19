@@ -8,13 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GPSPoint : NSObject
+@interface GPSPoint : NSObject <NSCoding>
 
 @property (nonatomic) CLLocationDegrees longitude;
 @property (nonatomic) CLLocationDegrees latitude;
+@property (nonatomic, readonly) NSDictionary* jsonDescription;
 
-- (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate;
-- (id)initWithLongitute:(CLLocationDegrees)longitude andLatitude:(CLLocationDegrees)latitude;
-- (CLLocationCoordinate2D)getCoordinate;
+-(id)initWithCoordinate:(CLLocationCoordinate2D)coordinate;
+-(id)initWithLongitute:(CLLocationDegrees)longitude andLatitude:(CLLocationDegrees)latitude;
+-(id)initWithJSON:(NSDictionary*)json;
+-(CLLocationCoordinate2D)getCoordinate;
 
 @end

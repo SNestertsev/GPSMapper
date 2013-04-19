@@ -7,8 +7,10 @@
 //
 
 #import "ObjectViewController.h"
+#import "GPSMap.h"
 #import "GPSMapItem.h"
 #import "GPSPoint.h"
+#import "MapRepository.h"
 
 @interface ObjectViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *accuracyField;
@@ -25,6 +27,7 @@
 
 @implementation ObjectViewController
 
+@synthesize map = _map;
 @synthesize objectDetails = _objectDetails;
 @synthesize accuracyField = _accuracyField;
 @synthesize longitudeField = _longitudeField;
@@ -60,6 +63,11 @@
     [self updateOverlay];
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[MapRepository instance] saveMap:self.map];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -88,7 +96,7 @@
     }
     
     if (self.objectDetails.points.count > 0) {
-        [self.mapView setRegion:self.objectDetails.getPointsRegion animated:NO];
+        [self.mapView setRegion:self.objectDetails.getMapRegion animated:NO];
         self.isRegionInitialized = YES;
         
         if (self.objectDetails.points.count == 1) {
